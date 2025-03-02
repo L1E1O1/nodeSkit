@@ -13,15 +13,15 @@ app.use(express.urlencoded({ extended : false}));
 
 //create
 app.post('/insert', (request, response) => {
+    
     })
 
 //read
-app.get('/getAll', (request, response) => {
-    response.json({
-        success: true
-        
-    })
-})
+app.get('/getAll', async (request, response) => {
+    const db = dbService.getDbServiceInstance();
+    const result = await db.getAllData();
+    response.json({ data: result }); // Send the data as a JSON response
+});
 
 //Update
 
